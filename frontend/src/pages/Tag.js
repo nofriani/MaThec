@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import BoxTag from '../components/BoxTag';
-import useTagStore from '../zustand/tagStore';
+import { useEffect } from "react";
+import BoxTag from "../components/BoxTag";
+import useTagStore from "../zustand/tagStore";
 
 const Tag = () => {
   // const [data, setData] = useState();
@@ -46,71 +46,71 @@ const Tag = () => {
 
   return (
     <>
-      <div className='d-flex justify-content-between mb-3'>
-        <div className='btn-group'>
-          <select className='btn btn-light p-1 card' onChange={handleChange}>
-            <option value='5'>5</option>
-            <option value='10' selected>
+      <div className="d-flex justify-content-between mb-3">
+        <div className="btn-group">
+          <select className="btn btn-light p-1 card" onChange={handleChange}>
+            <option value="5">5</option>
+            <option value="10" selected>
               10
             </option>
-            <option value='20'>20</option>
-            <option value='30'>30</option>
-            <option value='40'>40</option>
-            <option value='50'>50</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
           </select>
         </div>
-        <div class='btn-group' role='group'>
+        <div class="btn-group" role="group">
           <button
-            type='button'
-            class='btn btn-light ms-1 card'
-            onClick={() => filterData('tag_new')}
+            type="button"
+            class="btn btn-light ms-1 card"
+            onClick={() => filterData("tag_new")}
           >
             New
           </button>
           <button
-            type='button'
-            class='btn btn-light ms-1 card'
-            onClick={() => filterData('tag_long')}
+            type="button"
+            class="btn btn-light ms-1 card"
+            onClick={() => filterData("tag_long")}
           >
             Long
           </button>
         </div>
       </div>
       {isLoading && (
-        <div className='vh-100 d-flex align-items-center justify-content-center'>
-          <div class='spinner-border' role='status'>
-            <span class='visually-hidden'>Loading...</span>
+        <div className="vh-100 d-flex align-items-center justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
           </div>
         </div>
       )}
       {/* Content */}
-      <div className='row mt-4'>
+      <div className="row mt-4">
         {data &&
           data
             .filter(
               (_, index) => index >= page * row - row && index < page * row
             )
             .map((d) => (
-              <div className='col-md-6 mb-3'>
-                <div className='card'>
-                  <div className='card-body'>
+              <div className="col-md-6 mb-3">
+                <div className="card">
+                  <div className="card-body">
                     <BoxTag name={d.tag_name} />
                     <h4
-                      className='mt-2'
+                      className="mt-2"
                       style={{
-                        fontSize: '18px',
+                        fontSize: "18px",
                       }}
                     >
                       {d.title}
                     </h4>
                     <p
-                      className='text-start'
+                      className="text-start"
                       style={{
-                        fontSize: '14px',
+                        fontSize: "14px",
                       }}
                     >
                       {d.body.length > 100
-                        ? d.body.substring(0, 90) + '...'
+                        ? d.body.substring(0, 90) + "..."
                         : d.body}
                     </p>
                   </div>
@@ -119,13 +119,13 @@ const Tag = () => {
             ))}
       </div>
 
-      <div className='d-flex gap-1'>
+      <div className="d-flex gap-1">
         <div
-          className='bg-white py-3 p-4 rounded'
-          style={{ cursor: 'pointer' }}
+          className="bg-white py-3 p-4 rounded"
+          style={{ cursor: "pointer" }}
           onClick={handleDown}
         >
-          {'<'}
+          {"<"}
         </div>
         {Array.from(
           { length: countPage !== 0 ? countPage : 1 },
@@ -134,20 +134,20 @@ const Tag = () => {
           <div
             key={index}
             className={`${
-              index + 1 === page ? 'bg-primary text-white' : 'bg-white'
+              index + 1 === page ? "bg-primary text-white" : "bg-white"
             } py-3 p-4 rounded`}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             onClick={() => handlePage(index + 1)}
           >
             {index + 1}
           </div>
         ))}
         <div
-          className='bg-white py-3 p-4 rounded'
-          style={{ cursor: 'pointer' }}
+          className="bg-white py-3 p-4 rounded"
+          style={{ cursor: "pointer" }}
           onClick={handleUp}
         >
-          {'>'}
+          {">"}
         </div>
       </div>
     </>

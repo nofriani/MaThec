@@ -1,7 +1,7 @@
-'use strict';
-const { Model } = require('sequelize');
-const Question = require('./question');
-const Tag = require('./tag');
+"use strict";
+const { Model } = require("sequelize");
+const Question = require("./question");
+const Tag = require("./tag");
 module.exports = (sequelize, DataTypes) => {
   class QuestionTag extends Model {
     /**
@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Tag, {
-        foreignKey: 'tag_id',
-        as: 'tag',
+        foreignKey: "tag_id",
+        as: "tag",
       });
       this.belongsTo(models.Question, {
-        foreignKey: 'question_id',
+        foreignKey: "question_id",
       });
     }
   }
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         references: {
           model: Question,
-          key: 'id',
+          key: "id",
         },
       },
       tag_id: {
@@ -39,14 +39,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         references: {
           model: Tag,
-          key: 'id',
+          key: "id",
         },
       },
     },
     {
       sequelize,
-      modelName: 'QuestionTag',
-      tableName: 'QuestionTags',
+      modelName: "QuestionTag",
+      tableName: "QuestionTags",
       underscored: true,
     }
   );
